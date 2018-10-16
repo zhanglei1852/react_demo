@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropType from 'prop-types'
 class TodoItem extends React.Component {
   constructor (props) {
     super(props)
@@ -13,10 +13,19 @@ class TodoItem extends React.Component {
     return (
         <li 
           onClick={this.deleteItem}
-          dangerouslySetInnerHTML= {{__html: this.props.item}}
+          dangerouslySetInnerHTML= {{__html:  this.props.test + '-' + this.props.item}}
         ></li>
     )
   }
 }
 
+TodoItem.propsType = {
+  item: PropType.string,
+  deleteItem: PropType.func,
+  test: PropType.string.isRequired
+}
+
+TodoItem.defaultProps = {
+  test: 'hello world'
+}
 export default TodoItem
